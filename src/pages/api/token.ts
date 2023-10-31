@@ -21,8 +21,8 @@ export default async function handler(
       expires?: string;
     };
     res.setHeader("Set-Cookie", [
-      `token=${token}; domain=child-next-app.vercel.app;Path=/home; SameSite=Lax; Secure; Expires=${expires}`,
-      `location=${location}; domain=child-next-app.vercel.app;Path=/home; SameSite=Lax; Secure; Expires=${expires}`,
+      `token=${token}; domain=child-next-app.vercel.app;Path=/home; SameSite=None; Secure; Expires=${expires}`,
+      `location=${location}; domain=child-next-app.vercel.app;Path=/home; SameSite=None; Secure; Expires=${expires}`,
     ]);
     return res.status(200).send({ message: "Token set" });
   } catch (error) {
