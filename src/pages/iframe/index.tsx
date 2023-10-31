@@ -1,25 +1,35 @@
 import clsx from "clsx";
 import { Rubik } from "next/font/google";
 import Head from "next/head";
-import React from "react";
-import { GetServerSideProps } from "next";
+import React, { useCallback, useEffect } from "react";
 
 const font = Rubik({
   subsets: ["latin-ext"],
 });
 
-//getServerSideProps with Typescript
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  ctx.res.setHeader(
-    "Set-Cookie",
-    "name=Mike; domain:localhost:3001; SameSite=None; Secure",
-  );
-  return {
-    props: {},
-  };
-};
-
 export default function Iframe() {
+  const [, setLoading] = React.useState<boolean>(false);
+  const [showIframe, setShowIframe] = React.useState<boolean>(true);
+
+  const handleCitiLogin = useCallback(() => {
+    setLoading(true);
+    fetch("http://localhost:3001/api/token", {
+      method: "POST",
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then(() => {
+        setLoading(false);
+        setShowIframe(false);
+        setTimeout(() => {
+          setShowIframe(true);
+        }, 1000);
+      })
+      .catch(() => {
+        setLoading(false);
+      });
+  }, []);
+
   return (
     <React.Fragment>
       <>
@@ -29,21 +39,30 @@ export default function Iframe() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <main className={clsx(font.className, "flex min-h-screen flex-col")}>
-          <nav className="bg-gradient-to-r from-sky-400 via-sky-400 to-sky-700">
+          <nav className="bg-gradient-to-r from-gray-700 via-gray-700 to-gray-800">
             <div className="container mx-auto max-w-screen-xl px-4 py-4">
-              <span className="text-4xl text-white">Parent App</span>
+              <span className="text-4xl text-white">EJ Frame</span>
             </div>
           </nav>
-          <div className="grow bg-gradient-to-b from-sky-100 to-sky-50">
+          <div className="grow bg-gray-100">
             <div className="container mx-auto max-w-screen-xl px-4 py-4">
-              <div className="mt-6 text-2xl font-bold text-gray-800">
-                Iframe
+              <div className="my-4 flex items-center gap-4">
+                <button
+                  onClick={handleCitiLogin}
+                  className="rounded bg-blue-500 px-6 py-1 text-white hover:bg-blue-700"
+                >
+                  Login
+                </button>
+                <div className="">Click on this button to login to Citi</div>
               </div>
-              <div className="mt-2 flex h-[60dvh] flex-col overflow-hidden rounded-lg bg-white">
-                <iframe
-                  src="http://localhost:3001"
-                  className="h-full w-full grow"
-                ></iframe>
+              <div className="mt-2 flex h-[90dvh] flex-col overflow-hidden rounded-lg bg-white shadow">
+                {showIframe && (
+                  <iframe
+                    src="http://localhost:3001"
+                    className="h-full w-full grow"
+                    sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals allow-top-navigation"
+                  ></iframe>
+                )}
               </div>
             </div>
           </div>
