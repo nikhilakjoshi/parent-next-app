@@ -13,7 +13,7 @@ export default function Iframe() {
 
   const handleCitiLogin = useCallback(() => {
     setLoading(true);
-    fetch("http://localhost:3001/api/token", {
+    fetch("http://child-next-app.vercel.app/api/token", {
       method: "POST",
       credentials: "include",
     })
@@ -58,7 +58,7 @@ export default function Iframe() {
               <div className="mt-2 flex h-[90dvh] flex-col overflow-hidden rounded-lg bg-white shadow">
                 {showIframe && (
                   <iframe
-                    src="http://localhost:3001"
+                    src="https://child-next-app.vercel.app"
                     className="h-full w-full grow"
                     sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals allow-top-navigation"
                   ></iframe>
