@@ -1,8 +1,6 @@
 import Head from "next/head";
-import clsx from "clsx";
-import { GetServerSideProps } from "next";
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps = () => {
   return {
     redirect: {
       destination: "/iframe",

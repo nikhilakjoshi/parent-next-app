@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { Rubik } from "next/font/google";
 import Head from "next/head";
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback } from "react";
 
 const font = Rubik({
   subsets: ["latin-ext"],
