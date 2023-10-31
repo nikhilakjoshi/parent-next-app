@@ -13,14 +13,14 @@ export default function Iframe() {
 
   const handleCitiLogin = useCallback(() => {
     setLoading(true);
-    // fetch("https://child-next-app.vercel.app/api/token", {
-    //   method: "POST",
-    //   credentials: "include",
-    // })
-    fetch("/api/token", {
+    fetch("https://child-next-app.vercel.app/api/token", {
       method: "POST",
-      // credentials: "include",
+      credentials: "include",
     })
+      // fetch("/api/token", {
+      //   method: "POST",
+      //   // credentials: "include",
+      // })
       .then((res) => res.json())
       .then(() => {
         setLoading(false);
