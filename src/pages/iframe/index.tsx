@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { Rubik } from "next/font/google";
 import Head from "next/head";
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 
 const font = Rubik({
   subsets: ["latin-ext"],
@@ -30,6 +30,10 @@ export default function Iframe() {
       });
   }, []);
 
+  useEffect(() => {
+    handleCitiLogin();
+  }, []);
+
   return (
     <React.Fragment>
       <>
@@ -46,7 +50,7 @@ export default function Iframe() {
           </nav>
           <div className="grow bg-gray-100">
             <div className="container mx-auto max-w-screen-xl px-4 py-4">
-              <div className="my-4 flex items-center gap-4">
+              {/* <div className="my-4 flex items-center gap-4">
                 <button
                   onClick={handleCitiLogin}
                   className="rounded bg-blue-500 px-6 py-1 text-white hover:bg-blue-700"
@@ -54,7 +58,7 @@ export default function Iframe() {
                   Login
                 </button>
                 <div className="">Click on this button to login to Citi</div>
-              </div>
+              </div> */}
               <div className="mt-2 flex h-[90dvh] flex-col overflow-hidden rounded-lg bg-white shadow">
                 {showIframe && (
                   <iframe
