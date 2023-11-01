@@ -9,7 +9,7 @@ const font = Rubik({
 
 export default function Iframe() {
   const [, setLoading] = React.useState<boolean>(false);
-  const [showIframe, setShowIframe] = React.useState<boolean>(true);
+  const [showIframe, setShowIframe] = React.useState<boolean>(false);
 
   const handleCitiLogin = useCallback(() => {
     setLoading(true);
