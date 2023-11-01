@@ -16,6 +16,10 @@ export default function Iframe() {
     fetch("https://child-next-app.vercel.app/api/token", {
       method: "POST",
       credentials: "include",
+      headers: {
+        "Access-Control-Allow-Origin": "https://child-next-app.vercel.app",
+        "Access-Control-Allow-Credentials": "true",
+      },
     })
       .then((res) => res.json())
       .then(() => {

@@ -27,7 +27,7 @@ export default function Iframe2() {
               <iframe
                 src="https://parent-next-app.vercel.app/proxy"
                 className="h-full w-full grow"
-                sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals allow-top-navigation"
+                sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals allow-top-navigation allow-storage-access-by-user-activation"
               ></iframe>
             </div>
           </div>
