@@ -12,7 +12,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   // fetch todos from json placeholder
   const uniqueId = new Date().getTime().toString();
   const res = await fetch(
-    "https://child-next-app-2.vercel.app/api/createToken",
+    "https://child-next-app-2-utcm.vercel.app/api/createToken",
     {
       method: "POST",
       credentials: "include",
@@ -26,7 +26,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   //   console.log(JSON.stringify({ key: uniqueId }));
   return {
     redirect: {
-      destination: `https://child-next-app-2.vercel.app/token/${uniqueId}`,
+      destination: `https://child-next-app-2-utcm.vercel.app/token/${uniqueId}`,
       permanent: true,
     },
   };
