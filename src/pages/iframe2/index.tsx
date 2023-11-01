@@ -25,7 +25,7 @@ export default function Iframe2() {
           <div className="container mx-auto max-w-screen-xl px-4 py-4">
             <div className="mt-2 flex h-[90dvh] flex-col overflow-hidden rounded-lg bg-white shadow">
               <iframe
-                src="http://localhost:3000/proxy"
+                src="https://parent-next-app.vercel.app/proxy"
                 className="h-full w-full grow"
                 sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals allow-top-navigation"
               ></iframe>
