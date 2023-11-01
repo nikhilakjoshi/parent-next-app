@@ -7,33 +7,7 @@ const font = Rubik({
   subsets: ["latin-ext"],
 });
 
-export default function Iframe() {
-  const [, setLoading] = React.useState<boolean>(false);
-  const [showIframe, setShowIframe] = React.useState<boolean>(false);
-
-  const handleCitiLogin = useCallback(() => {
-    setLoading(true);
-    fetch("https://child-next-app.vercel.app/api/token", {
-      method: "POST",
-      credentials: "include",
-    })
-      .then((res) => res.json())
-      .then(() => {
-        setLoading(false);
-        setShowIframe(false);
-        setTimeout(() => {
-          setShowIframe(true);
-        }, 1000);
-      })
-      .catch(() => {
-        setLoading(false);
-      });
-  }, []);
-
-  useEffect(() => {
-    handleCitiLogin();
-  }, []);
-
+export default function Iframe2() {
   return (
     <React.Fragment>
       <Head>
@@ -50,13 +24,11 @@ export default function Iframe() {
         <div className="grow bg-gray-100">
           <div className="container mx-auto max-w-screen-xl px-4 py-4">
             <div className="mt-2 flex h-[90dvh] flex-col overflow-hidden rounded-lg bg-white shadow">
-              {showIframe && (
-                <iframe
-                  src="https://child-next-app.vercel.app"
-                  className="h-full w-full grow"
-                  sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals allow-top-navigation"
-                ></iframe>
-              )}
+              <iframe
+                src="http://localhost:3000/proxy"
+                className="h-full w-full grow"
+                sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals allow-top-navigation"
+              ></iframe>
             </div>
           </div>
         </div>
