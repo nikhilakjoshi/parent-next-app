@@ -16,10 +16,6 @@ export default function Iframe() {
     fetch("https://child-next-app.vercel.app/api/token", {
       method: "POST",
       credentials: "include",
-      // headers: {
-      //   "Access-Control-Allow-Origin": "https://child-next-app.vercel.app",
-      //   "Access-Control-Allow-Credentials": "true",
-      // },
     })
       .then((res) => res.json())
       .then(() => {
@@ -35,6 +31,7 @@ export default function Iframe() {
   }, []);
 
   useEffect(() => {
+    // document.
     handleCitiLogin();
   }, []);
 
@@ -58,7 +55,7 @@ export default function Iframe() {
                 <iframe
                   src="https://child-next-app.vercel.app"
                   className="h-full w-full grow"
-                  sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals allow-top-navigation"
+                  sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals allow-top-navigation allow-storage-access-by-user-activation"
                 ></iframe>
               )}
             </div>
